@@ -1,0 +1,61 @@
+ /*Title & the Input box is aligned to Center*/
+        li{font-size: 25px;}
+        /*The Instructions are aligned to Left Side of the Game*/
+        p{ text-align: left; }
+        #playAgain
+        {
+            width: 150px;
+            height: 60px;
+            font-size: 23px; 
+            background-color: pink; 
+            color: black; 
+            border: 0;
+            cursor: pointer;
+            margin-left: 29em;
+            display: none;
+
+        }
+        h4{ text-align: left;}
+        /*Hiding the Input Box before stating the Game*/
+        #game{ display: none; text-align: center;}
+        /*Some basic CSS to the Start Button*/
+        #startbutton
+        {  
+            width: 250px;
+            height: 60px;
+            font-size: 23px; 
+            background-color:darkorchid; 
+            color: aliceblue; 
+            border: 0; 
+            border-radius: 5px; 
+            cursor: pointer;
+            margin-left: 27em;
+        }
+        /*Title of the Game*/
+    h1
+    {
+        font-family: Adobe Caslon Pro; 
+        font-size: 50px; 
+        text-align: center; 
+        color:fuchsia
+    }
+    body{ background-color: antiquewhite; }
+    /*Random Number */
+    #Rnumber{font-size: 75px; font-family: 'Times New Roman'; }
+    /*Some CSS for the Input Box (i may remove this in future)*/
+    #tips{font-size: 25px;}
+    #input
+    {
+        font-size: 30px;
+        padding: 20px;
+        margin: 0 auto;
+        width: 40vh;
+        border: 5px solid black;
+        border-radius: 5px;
+        margin-top: 50px;
+        display: none;
+    }
+    #level{font-size: 40px; margin-top: 130px; } /*Level of the Game*/
+    #score{font-size: 40px;}  /*Score of the PLayer*/
+    #feedback{font-size: 40px;} /*Displays the Number which user has forgot*/
+    #ins{font-family: Cambria; font-size: 20px; }
