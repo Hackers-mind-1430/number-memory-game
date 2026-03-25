@@ -41,5 +41,3 @@ index.html
 ## Author
 
 Bhanu Prasad
-
-If you want, I can also help you create a **strong GitHub portfolio-style README** so all your repos (games, Android apps, experiments) look consistent and professional.
