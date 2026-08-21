@@ -11,7 +11,7 @@
             color: black; 
             border: 0;
             cursor: pointer;
-            margin-left: 29em;
+            margin: 20px auto;
             display: none;
 
         }
@@ -29,7 +29,8 @@
             border: 0; 
             border-radius: 5px; 
             cursor: pointer;
-            margin-left: 27em;
+            display: block;
+            margin: 20px auto;
         }
         /*Title of the Game*/
     h1
@@ -39,7 +40,7 @@
         text-align: center; 
         color:fuchsia
     }
-    body{ background-color: antiquewhite; }
+    body{ background-color: antiquewhite; margin: 0; padding: 20px; }
     /*Random Number */
     #Rnumber{font-size: 75px; font-family: 'Times New Roman'; }
     /*Some CSS for the Input Box (i may remove this in future)*/
@@ -49,7 +50,7 @@
         font-size: 30px;
         padding: 20px;
         margin: 0 auto;
-        width: 40vh;
+        width: min(40vh, 80vw);
         border: 5px solid black;
         border-radius: 5px;
         margin-top: 50px;
@@ -59,3 +60,11 @@
     #score{font-size: 40px;}  /*Score of the PLayer*/
     #feedback{font-size: 40px;} /*Displays the Number which user has forgot*/
     #ins{font-family: Cambria; font-size: 20px; }
+    @media (max-width: 600px)
+    {
+        h1{font-size: 40px;}
+        li{font-size: 20px;}
+        #tips{font-size: 20px;}
+        #level{margin-top: 70px;}
+        #feedback{font-size: 28px;}
+    }
