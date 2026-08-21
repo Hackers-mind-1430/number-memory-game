@@ -37,6 +37,8 @@ Then open:
 ```
 index.html
 ```
+## Global Host:
+https://number-memory-game-loner.vercel.app/
 
 ## Author
 
