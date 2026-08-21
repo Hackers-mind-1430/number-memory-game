@@ -6,6 +6,8 @@
         var level=1; /*Level of the Player (everyone starts from '0' :) */
         var score=0; /*Incremented by 10 for every correct Input*/
         var delay=3000; //the amount of time it takes before disappearing
+        var numberTimer;
+        var acceptingInput=false;
         
         var currentnumber=0; //This is where the Random number gets Stored*/
         /*Every div is accessed through with the ID of 'My' hence this is 'My' Game*/
@@ -13,12 +15,19 @@
         const Mylevel=document.getElementById("level");
         const Myscore=document.getElementById("score");
         const Myinput=document.getElementById("input");
-        const Myfeedback=document.getElementById("feedback")
+        const Myfeedback=document.getElementById("feedback");
         const Mystartbutton=document.getElementById("startbutton");
         const Mygame=document.getElementById("game");
         const Myins=document.getElementById("ins");
-        const MyCheer=document.getElementById("Cheer")
+        const MyCheer=document.getElementById("Cheer");
         const MyPlayAgain=document.getElementById("playAgain");
+        const cheer=[ "Great Start! Keep goin'",
+                "You are doing awesome!!",
+                "Keep it up",
+                "You are doing Great!!",
+                "Nice",
+                "Now you can Remember an OTP",
+                ];
         /*This is where the Magic happens :0*
          A Fucntion which Generates the Random Number that the User should Remember
          already the Pre-defined function "Math.random" is used to get a random Number*/
@@ -35,7 +44,11 @@
         function startthegame()
         {
             /*Input box is now Visible*/
+            clearTimeout(numberTimer);
+            acceptingInput=false;
             Myinput.style.display="none";
+            Myinput.disabled=true;
+            MyRnumber.style.display="block";
             /*Stores the random Number into the currentNumber*/  
             currentnumber=generateRnumber();
             /*the Random number is displayed in the Rnumber Div*/
@@ -45,18 +58,19 @@
             /*a settimeout Fucntion which is used to Hide the random number and
              enables the Input box so that the user can enter the Input*/
              
-            setTimeout(()=> 
+            numberTimer=setTimeout(()=> 
             {
                 MyRnumber.style.display="none"; /*the random number is disappeared*/
                 Myinput.style.display="block";
                 Myinput.disabled=false;
+                acceptingInput=true;
                Myinput.focus();
             }, delay); /*Executes the Code after some Time delay (after 3 secs)*/
  
         }
 
          /*Checks the Number if the user Enters the number and hits the enter button*/
-        input.addEventListener("keydown",(event) =>
+        Myinput.addEventListener("keydown",(event) =>
         {
             /*checks if the clicked button is "Enter" or Not*/
             if(event.key === "Enter")
@@ -70,7 +84,13 @@
         function checknumber() 
         {
             /*User's input is stored in the userInput var*/
-            const userInput=parseInt(input.value, 10); /* input is accessed with input.value & 10 is for Decimal of Parseint*/
+            if(!acceptingInput)
+            {
+                return;
+            }
+            acceptingInput=false;
+            Myinput.disabled=true;
+            const userInput=parseInt(Myinput.value, 10); /* input is accessed with input.value & 10 is for Decimal of Parseint*/
             /*if the user's input Matches with the Random Number*/
             if(userInput === currentnumber) 
             {
@@ -100,11 +120,11 @@
              else 
             {
                 /*Input Box is Disabled so that the user cannot enter the Numbers again*/
-                input.disabled=true;
+                Myinput.disabled=true;
                 /*Displays the Correct random number which user failed to Remember */
                 Myfeedback.textContent="The Correct number was: "+currentnumber;
                 /*Displays the Level of the User*/
-                Myinput.textContent="Reached Level: "+level;
+                Mylevel.textContent="Reached Level: "+level;
                 /*Displays the score of the user*/
                 
                 Myscore.textContent="Score: " +score;
@@ -117,7 +137,7 @@
 
 
         /*This Eventlistener executes when the startbutton is Clicked*/
-    startbutton.addEventListener("click", ()=>
+    Mystartbutton.addEventListener("click", ()=>
     {
         /*hides the Instructions*/
        Myins.style.display="none";
@@ -127,13 +147,6 @@
         startthegame();
         
     });
-    var cheer=[ "Great Start! Keep goin'",
-                "You are doing awesome!!",
-                "Keep it up",
-                "You are doing Great!!",
-                "Nice",
-                "Now you can Remember an OTP",
-                ];
         /*End of the L0gic*/
 
        /* function getLocalStorage()
@@ -152,6 +165,7 @@
         function replay()
         {
             //reset the Variables
+            clearTimeout(numberTimer);
             min=1,max=9,level=1,score=0,delay=3000;
 
             //resetting the level & stuff
@@ -168,6 +182,8 @@
             Myfeedback.textContent="";
             Mylevel.textContent="";
             Myscore.textContent="";
+            Myinput.disabled=true;
+            acceptingInput=false;
             MyRnumber.style.display="block";
             Myinput.value="";
             MyPlayAgain.style.display="none";
